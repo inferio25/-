@@ -24,7 +24,6 @@ traindatas = traindatas.drop(['is_risk'], axis=1)
 # 合并训练集和测试集
 totaldf = pd.concat([traindatas, testdatas], axis=0)
 
-totaldf = pd.read_csv(r'D:\python\机器学习\机器学习课程设计\totaldf.csv')
 # 将特征值和结果表进行合并
 totaldf = pd.concat([totaldf, data_y], axis=1)
 
@@ -61,7 +60,7 @@ totaldf = pd.concat([totaldf, data_y], axis=1)
 #                 # 如果不存在则存入数组
 #                 if len(data_xk[data_xk == data_xi[j]]) == 0:
 #                     data_xk = np.append(data_xk, data_xi[j])
-#         # 通过观察op_datetime和ip_type对数据无任何影响，所以在输入数据中去除
+#         # 通过观察ip_type对数据无任何影响，所以在输入数据中去除
 #         r = len(data_xk)
 #         # X0[:, i]  第一列的所有数据
 #         # X0[:, 1]第一列数据
@@ -112,7 +111,7 @@ totaldf = pd.concat([totaldf, data_y], axis=1)
 totaldf['ip_type'].value_counts()
 totaldf = totaldf.drop(['ip_type'], axis=1)
 
-# 对数据进行处理，将str类型的数据转换为离散类型
+# 对数据进行处理，将str类型的数据转换为数值类型
 object_list = ['ip_transform', 'device_num_transform', 'browser', 'browser_version', 'department',
                'log_system_transform', 'op_city', 'os_type', 'os_version', 'url', 'http_status_code']
 for feature in object_list:
