@@ -1,22 +1,12 @@
-# 导入需要的第三方库
-# 用于保存和提取模型
-import joblib
-import lightgbm as lgbm
 import numpy as np
-# 导入相关库
-import optuna
 import pandas as pd
+import optuna
+import lightgbm as lgbm
 from lightgbm import log_evaluation, early_stopping
-# 对数据进行训练之前检测出不太好地超参数集，从而显着减少搜索时间
 from optuna.integration import LightGBMPruningCallback
-# 导入方差过滤
 from sklearn.feature_selection import VarianceThreshold
-# K折交叉验证
 from sklearn.model_selection import StratifiedKFold
-# 训练集和测试集分割
 from sklearn.model_selection import train_test_split
-# 评价指标
-# 导入LabelEncoder
 from sklearn.preprocessing import LabelEncoder
 
 # 训练集路径
