@@ -24,6 +24,7 @@ traindatas = traindatas.drop(['is_risk'], axis=1)
 # 合并训练集和测试集
 totaldf = pd.concat([traindatas, testdatas], axis=0)
 
+totaldf = pd.read_csv(r'D:\python\机器学习\机器学习课程设计\totaldf.csv')
 # 将特征值和结果表进行合并
 totaldf = pd.concat([totaldf, data_y], axis=1)
 
@@ -119,7 +120,7 @@ for feature in object_list:
 
 # 对于op_datetime需要进行转换为时间格式，求出两个特征之间的关联
 totaldf['op_datetime'] = pd.to_datetime(totaldf['op_datetime'])
-# 然后再转化为离散型
+# 然后再转化为数值型
 totaldf['op_ts'] = totaldf['op_datetime'].values.astype(np.int64)
 # 对于同用户名的浏览记录，按时间排序
 totaldf = totaldf.sort_values(by=['user_name', 'op_ts']).reset_index(drop=True)
